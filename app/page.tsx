@@ -24,7 +24,7 @@ const Home = () => {
             <Searchbar />
           </div>
           <HeroCarousel />
-          <Image 
+          <Image
             src="/assets/icons/hand-drawn-arrow.svg" 
             alt="arrow" 
             width={175} 
