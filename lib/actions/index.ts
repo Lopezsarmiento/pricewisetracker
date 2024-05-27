@@ -72,3 +72,23 @@ export const getAllProducts = async () => {
     console.error(`Failed to get all products: ${error}`);
   }
 }
+
+export const getSimilarProducts = async (productId: string) => {
+  try {
+    connectToDatabase();
+
+    const currentProduct = await Product.findById(productId);
+
+    if (!currentProduct) return null;
+
+    const similarProducts = await Product.find({
+      _id: { $ne: productId }
+    }).limit(4);
+
+    return similarProducts;
+
+
+  } catch (error) {
+    console.error(`Failed to get all products: ${error}`);
+  }
+}
