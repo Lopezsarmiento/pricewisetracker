@@ -1,12 +1,14 @@
+import React from "react";
 import PriceInfoCard from "@/components/PriceInfoCard";
 import ProductCard from "@/components/ProductCard";
+import Modal from "@/components/Modal";
 import { getProductById, getSimilarProducts } from "@/lib/actions";
 import { formatNumber } from "@/lib/utils";
 import { Product } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import React from "react";
+
 type Props = {
   params: { id: string };
 };
@@ -146,7 +148,7 @@ const ProductDetails = async ({ params: { id } }: Props) => {
               />
             </div>
           </div>
-          {/** Modal */}
+          <Modal productId={id}/>
         </div>
       </div>
 
