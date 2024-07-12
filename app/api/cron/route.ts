@@ -6,6 +6,10 @@ import { generateEmailBody, sendEmail } from "@/lib/nodemailer";
 import { NextResponse } from "next/server";
 
 
+export const maxDuration = 300; // 5 minutes
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export async function GET () {
   try {
 
@@ -35,7 +39,7 @@ export async function GET () {
           averagePrice: getAveragePrice(updatedPriceHistory),
         };
 
-        const updatedProduct = await Product.findOneAndUpdate({ url: scrapedProduct.url }, product);
+        const updatedProduct = await Product.findOneAndUpdate({ url: product.url }, product);
 
         // 2. check product status and send email if necessary
         const emaiNotifType = getEmailNotifType(scrapedProduct, currentProduct);
